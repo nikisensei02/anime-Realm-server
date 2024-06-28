@@ -13,7 +13,11 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'https://667ee9612d3c734c6e7b655d--quiet-praline-05821d.netlify.app', // Allow only this origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allow these methods
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+}));
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve uploads directory as static
 
